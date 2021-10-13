@@ -17,7 +17,9 @@ const files = await imagemin(["public/*.{jpg,png}"], {
 
 const dests = files
   .map(({ destinationPath }) => {
-    return destinationPath.replace(/.*\\/, `${HOST}images/`);
+    const path = destinationPath.replace(/.*\\/, `${HOST}images/`);
+
+    return `<img src="${path}" />`;
   })
   .reduce((sum, path, index) => {
     if (!(index % 2)) {
