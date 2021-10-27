@@ -5,7 +5,12 @@ import fs from "fs";
 
 const HOST = "https://static.gongbushang.com/";
 
-const files = await imagemin(["public/*.{jpg,jpeg,png}"], {
+const COMPUTER_ORG = "public";
+const COMPUTER_DES = "dest.csv";
+const STRUCT_ORG = "struct";
+const STRUCT_DES = "struct.csv";
+
+const files = await imagemin([`${STRUCT_ORG}/*.{jpg,jpeg,png}`], {
   destination: "images",
   plugins: [
     imageminJpegtran(),
@@ -31,4 +36,4 @@ const dests = files
   .map((group) => group.join(","))
   .join("\n");
 
-fs.writeFileSync("dest.csv", dests);
+fs.writeFileSync(STRUCT_DES, dests);
