@@ -5,7 +5,7 @@ import fs from "fs";
 
 const HOST = "https://static.gongbushang.com/";
 
-const files = await imagemin(["public/*.{jpg,png}"], {
+const files = await imagemin(["public/*.{jpg,jpeg,png}"], {
   destination: "images",
   plugins: [
     imageminJpegtran(),
